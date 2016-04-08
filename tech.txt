@@ -1,3 +1,4 @@
 - Server technology: express "npm install --save express"
 - PDF technology: PDFKit "npm install --save pdfkit"
+- Authentication technology: JWT "npm install --save jsonwebtoken" / express-JWT "npm install --save express-jwt"
 - Database: MongoDB
