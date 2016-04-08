@@ -1,1 +1,3 @@
-- Tecnologie PDF: PDFKit "npm install pdfkit"
+- Server technology: express "npm install --save express"
+- PDF technology: PDFKit "npm install --save pdfkit"
+- Database: MongoDB
