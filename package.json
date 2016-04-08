@@ -1,0 +1,11 @@
+{
+  "name": "doc-manager",
+  "version": "0.0.1",
+  "description": "Document Manager",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "pdfkit": "^0.7.2"
+  }
+}
