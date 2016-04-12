@@ -9,7 +9,7 @@ var user = Schema({
 });
 
 user.statics.findByUserPass = function (username, password, callback) {
-    this.find({ '_username': username, '_password': password }, function(err, data) {
+    this.find({ 'username': username, 'password': password }, function(err, data) {
         if (err)
             console.log(err);
 
@@ -17,4 +17,4 @@ user.statics.findByUserPass = function (username, password, callback) {
     });
 };
 
-module.exports = mongoose.model('user', user);
+module.exports = mongoose.model('users', user);

@@ -1,1 +1,12 @@
-<h3>Authentication view</h3>
+<div ng-controller="AuthenticationViewController as ctrl">
+    <h3>Authentication view</h3>
+    <div>
+        <input id="i_username" type="text" placeholder="username">
+    </div>
+    <div>
+        <input id="i_password" type="password" placeholder="password">
+    </div>
+    <div>
+        <button data-ng-click="ctrl.authenticate()">Login</button>
+    </div>
+</div>

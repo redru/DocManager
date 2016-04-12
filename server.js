@@ -5,6 +5,7 @@ var express = require('express'),
 var app = express();
 app.use(bodyParser.json());
 
+// Authentication handler
 app.get('/docmanager/*', function(req, res, next) {
     next();
 });
