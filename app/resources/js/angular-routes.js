@@ -1,9 +1,11 @@
 (function() {
     app.config(['$routeProvider',
         function($routeProvider) {
-            $routeProvider.
-            when('/Auth', {
+            $routeProvider.when('/Auth', {
                 templateUrl: '/docmanager/views/authentication_view.html',
+                controller: 'AuthenticationViewController'
+            }).when('/Home', {
+                templateUrl: '/docmanager/views/home_view.html',
                 controller: 'AuthenticationViewController'
             }).otherwise({
                 redirectTo: '/Auth'

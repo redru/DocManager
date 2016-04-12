@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var authenticationService = require('../services/authentication');
+
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
     console.log('Time: ', new Date());
@@ -8,13 +10,7 @@ router.use(function timeLog(req, res, next) {
     next();
 });
 
-router.get('/', function(req, res) {
-    var authenticationService = require('../services/authentication');
-    authenticationService.authenticateUser(req, res);
-});
-
 router.post('/', function(req, res) {
-    var authenticationService = require('../services/authentication');
     authenticationService.authenticateUser(req, res);
 });
 

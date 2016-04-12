@@ -8,8 +8,8 @@ var user = Schema({
     _role: String
 });
 
-user.statics.findByUserPass = function (username, password, callback) {
-    this.find({ 'username': username, 'password': password }, function(err, data) {
+user.statics.findByUsername = function (username, callback) {
+    this.find({ 'username': username }, function(err, data) {
         if (err)
             console.log(err);
 

@@ -2,3 +2,4 @@
 - PDF technology: PDFKit "npm install --save pdfkit"
 - Authentication technology: JWT "npm install --save jsonwebtoken" / express-JWT "npm install --save express-jwt"
 - Database: MongoDB
+- Password encrypt technology: bcryptjs "npm install --save bcryptjs"

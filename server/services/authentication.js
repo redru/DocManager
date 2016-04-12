@@ -1,4 +1,7 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
+
 var UsersModel = require('../dao/mongodb/schemas/user');
 
 var Service = function () {};
@@ -9,11 +12,25 @@ Service.prototype.authenticateUser = function(req, res) {
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function () {
-        UsersModel.findByUserPass('luca', '$2a$04$hVRXMJNQzrlIJrbLEcv6l.fwJoiINXBJJA5paZr4.13D.sjio1VbC', function (err, data) {
-            console.log('error: ' + err);
-            console.log('result: ' + data[0]._doc);
+        UsersModel.findByUsername(req.body.username, function (err, data) {
 
-            err ? res.status(404).send('Generic error.') : res.status(200).send(data);
+            if (err) {
+                console.log('Error: ' + err);
+                res.status(401).end();
+            } else if (data.length < 1) {
+                console.log('Error: username not found.');
+                res.status(401).end();
+            } else if (!bcrypt.compareSync(req.body.password, data[0]._doc.password)) {
+                console.log('Error: password not matches.');
+                res.status(401).end();
+            } else {
+                console.log('User "' + data[0]._doc.username + '" authenticated.');
+                var token = jwt.sign({ username: data[0]._doc.username, role: data[0]._doc.role }, 'Ad54_TyrwZ0?96');
+
+                res.writeHead(200, {'Authorization': 'Bearer ' + token});
+                res.end();
+            }
+
             mongoose.disconnect();
         });
     });

@@ -4,6 +4,7 @@
   "description": "Document Manager",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",

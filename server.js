@@ -1,12 +1,19 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
-    jwt = require('jsonwebtoken');
+    jwt = require('express-jwt');
 
 var app = express();
 app.use(bodyParser.json());
 
 // Authentication handler
-app.get('/docmanager/*', function(req, res, next) {
+/* app.all('/docmanager/*', function(req, res, next) {
+    if (req.url === '/docmanager/' || req.url === '/docmanager/index.html' || req.url === '/docmanager/views/authentication_view.html' || req.url === '/docmanager/authenticate')
+        next();
+ }); */
+app.use('/docmanager', jwt({ secret: 'Ad54_TyrwZ0?96'}).unless({path: [ '/docmanager/', '/docmanager/index.html', '/docmanager/views/authentication_view.html', '/docmanager/authenticate' ]}), function (req, res, next) {
+    if (req.url === '/docmanager/views/home_view.html')
+        console.log('Valid authentication token.');
+
     next();
 });
 
