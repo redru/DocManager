@@ -27,13 +27,21 @@ Service.prototype.authenticateUser = function(req, res) {
                 console.log('User "' + data[0]._doc.username + '" authenticated.');
                 var token = jwt.sign({ username: data[0]._doc.username, role: data[0]._doc.role }, 'Ad54_TyrwZ0?96');
 
-                res.writeHead(200, {'Authorization': 'Bearer ' + token});
+                res.writeHead(200, {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': 'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Authorization',
+                    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
+                    'Authorization': 'Bearer ' + token
+                });
+
                 res.end();
             }
 
             mongoose.disconnect();
+            db.removeAllListeners();
         });
     });
+
 };
 
 module.exports = new Service();

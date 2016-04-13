@@ -1,22 +1,43 @@
 (function() {
 
-    function authInterceptor(API, auth) {
+    var AuthInterceptor = function() {
         return {
-            // automatically attach Authorization header
             request: function (config) {
+                var auth = sessionStorage.getItem('Authorization');
+
+                if (auth && auth !== 'undefined')
+                    config.headers.Authorization = auth;
+
                 return config;
             },
 
-            // If a token was sent back, save it
             response: function (res) {
+                var headers = new res.headers();
+
+                if (headers.authorization)
+                    sessionStorage.setItem('Authorization', headers.authorization);
+
                 return res;
+            },
+
+            responseError: function(rejection) {
+                if (rejection.status === 401)
+                    window.location.hash = '/Auth';
+
+                return $q.reject(rejection);
             }
         }
     }
 
     // Angular initialization
     app = angular.module('docmanager', ['ngRoute']);
-    app.factory('authInterceptor', authInterceptor);
+
+    app.factory('authInterceptor', AuthInterceptor)
+        .config(['$httpProvider',
+            function($httpProvider) {
+                $httpProvider.interceptors.push('authInterceptor');
+            }
+        ]);
 
     /**
      * Window hashchange event
