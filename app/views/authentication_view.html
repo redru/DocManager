@@ -1,4 +1,4 @@
-<div ng-controller="AuthenticationViewController as ctrl">
+<div ng-controller="AuthenticationViewController as auth_ctrl">
     <div class="container">
         <div class="row">
             <div class="col-md-4"></div>
@@ -6,16 +6,18 @@
                 <h3>Authentication</h3>
                 <form>
                     <fieldset class="form-group">
-                        <input type="text" class="form-control" placeholder="username" data-ng-model="ctrl.username">
+                        <label for="usernameInput">Username: </label>
+                        <input id="usernameInput" type="text" class="form-control" placeholder="username" data-ng-model="auth_ctrl.username">
                     </fieldset>
                     <fieldset class="form-group">
-                        <input type="password" class="form-control" placeholder="password" data-ng-model="ctrl.password">
+                        <label for="passwordInput">Password: </label>
+                        <input id="passwordInput" type="password" class="form-control" placeholder="password" data-ng-model="auth_ctrl.password">
                     </fieldset>
                     <div>
-                        <button class="btn btn-primary" data-ng-click="ctrl.authenticate()">Login</button>
+                        <button class="btn btn-primary" data-ng-click="auth_ctrl.authenticate()">Login</button>
                     </div>
                 </form>
-                <span id="auth_error_message" class="text-red" style="display: none;">Username o password errati. Riprovare.</span>
+                <span id="auth_error_message" class="hidden text-red">Username o password errati. Riprovare.</span>
             </div>
         </div>
     </div>

@@ -27,12 +27,32 @@
                 return $q.reject(rejection);
             }
         }
-    }
+    };
+
+    var TokenService = function() {
+        return {
+            unpack: function(token) {
+                return JSON.parse(atob(token.split('.')[1])); // split token -> get payload -> decode Base64 -> parse JSON
+            }
+        }
+    };
+
+    var MenuService = function() {
+        return {
+            loadAdminMenu: function () {
+                debugger;
+                $('#navMenu').addClass('ready');
+                alert('Admin menu load...');
+            }
+        }
+    };
 
     // Angular initialization
     app = angular.module('docmanager', ['ngRoute']);
 
     app.factory('authInterceptor', AuthInterceptor)
+        .factory('token', TokenService)
+        .factory('menu', MenuService)
         .config(['$httpProvider',
             function($httpProvider) {
                 $httpProvider.interceptors.push('authInterceptor');

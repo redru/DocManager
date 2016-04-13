@@ -7,30 +7,30 @@
     <link rel="stylesheet" href="/resources/css/application.css">
 </head>
 <body>
-    <!-- Dynamic loaded content div -->
-    <div data-ng-view></div>
+<!-- Menu nav bar -->
+<div ng-controller="NavMenuController as menu_ctrl">
+    <div id="navMenu" ng-include="menu_ctrl.navMenuUrl" class="hidden"></div>
+</div>
 
-    <!-- <form action="/docmanager/authenticate" method="GET">
-        <input type="submit" value="GET" />
-    </form>
-    <form action="/docmanager/authenticate" method="POST">
-        <input type="submit" value="POST" />
-    </form> -->
+<!-- Dynamic loaded content div -->
+<div data-ng-view></div>
 
-    <!-- JQUERY -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<!-- JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
-    <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- BOOTSTRAP -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-    <!-- ANGULARJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+<!-- ANGULARJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
 
-    <!-- ANGULARJS CONFIGURATION -->
-    <script src="/resources/js/angular-app.js"></script>
-    <script src="/resources/js/angular-routes.js"></script>
-    <script src="/resources/js/authentication-view-controller.js"></script>
+<!-- ANGULARJS CONFIGURATION -->
+<script src="/resources/js/angular-app.js"></script>
+<script src="/resources/js/angular-routes.js"></script>
+<script src="/resources/js/authentication-view-controller.js"></script>
+<script src="/resources/js/nav-menu-controller.js"></script>
+
 </body>
 </html>

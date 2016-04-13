@@ -1,15 +1,12 @@
 (function() {
 
-    var AuthenticationViewController = function($http, $location) {
+    var AuthenticationViewController = function($http, $location, token, menu) {
         this.$http = $http;
         this.$location = $location;
-    };
+        this.menu = menu;
 
-    /* ContoController.prototype.getUsers = function() {
-        this.$http.get('/bank/getUsers')
-            .then(function (response) {
-            this.users = JSON.parse(response.data);
-    }); */
+        var payload = token.unpack(sessionStorage.getItem('Authorization'));
+    };
     
     AuthenticationViewController.prototype.authenticate = function() {
         $('#auth_error_message').fadeOut('fast');
@@ -21,13 +18,14 @@
             url: '/docmanager/authenticate'
         }).then(function successCallback(response) {
             $location.url('Home');
+            this.menu.loadAdminMenu();
         }, function errorCallback(response) {
             $('#auth_error_message').fadeIn('slow');
         });
     };
 
     // AngularJS, controller Class initialization
-    AuthenticationViewController.$inject = [ '$http', '$location' ];
+    AuthenticationViewController.$inject = [ '$http', '$location', 'token', 'menu' ];
     app.controller('AuthenticationViewController', AuthenticationViewController);
 
 })();
