@@ -7,7 +7,7 @@
                 reloadOnSearch: false
             }).when('/Home', {
                 templateUrl: '/docmanager/views/home_view.html',
-                controller: 'AuthenticationViewController',
+                controller: 'HomeViewController',
                 reloadOnSearch: false
             }).otherwise({
                 redirectTo: '/Auth'

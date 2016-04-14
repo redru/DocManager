@@ -9,7 +9,7 @@
 <body>
 <!-- Menu nav bar -->
 <div ng-controller="NavMenuController as menu_ctrl">
-    <div id="navMenu" ng-include="menu_ctrl.navMenuUrl" class="hidden"></div>
+    <div id="navMenu" ng-include="menu_ctrl.navMenuUrl" onload="menu_ctrl.onLoad()" class="hidden"></div>
 </div>
 
 <!-- Dynamic loaded content div -->
@@ -28,7 +28,9 @@
 
 <!-- ANGULARJS CONFIGURATION -->
 <script src="/resources/js/angular-app.js"></script>
+<script src="/resources/js/angular-services.js"></script>
 <script src="/resources/js/angular-routes.js"></script>
+<script src="/resources/js/home-view-controller.js"></script>
 <script src="/resources/js/authentication-view-controller.js"></script>
 <script src="/resources/js/nav-menu-controller.js"></script>
 
